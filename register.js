@@ -3,7 +3,6 @@ $(document).ready(function(){
    console.log(" dsu javascript");
 
   $("#submit").click(function() {
-    $("h1").hide();
     var fullname = $("#fullname").val();
     var sub_email = $("#email").val();
     var sub_password = $("#password").val();
