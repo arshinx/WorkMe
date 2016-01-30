@@ -11,10 +11,11 @@ $(document).ready(function(){
     }, function(error, authData) {
         if (error) {
         console.log("Login Failed!", error);
+        window.alert("Login Failed!")
         } else {
-        console.log("Authenticated successfully with payload:", authData);
-         window.location.replace("dashboard.html");
-         }
+            console.log("Authenticated successfully with payload:", authData);
+            window.location.replace("dashboard.html");
+        }
 });
 
 });
