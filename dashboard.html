@@ -15,7 +15,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="assets/css/agency.css" rel="stylesheet">
+    <link href="assets/css/agency2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -23,13 +23,11 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    
+    <style type="text/css">
+        html, body {height:100%; margin:0; padding:0;}
+        #map {height:100%;}
+    </style>
 
 </head>
 
@@ -46,67 +44,72 @@
     </header>
     
     <div class="container">
-        <div class="col-md-2">
-                <div class="row">
-                    <h4 href="#" class="text-muted">My Work</h4>
-                </div>
-                <div class="row">
-                    <h4 href="#" class="text-muted">Profile</h4>
-                 </div>
-                 <div class="row">
-                     <h4 href="#" class="text-muted">Payment</h4>
-                 </div>
-                 <div class="row">
-                     <h4 href="#" class="text-muted">Log Out</h4>
-                 </div>         
-            
-        </div>
-        <div class="col-xs-6 col-xs-offset-4">
-            <div class="row center-text">
-                <h3>My Work</h3> 
-            </div>
-        </div>
+        
+        <div class="col-lg-4">
             <div class="row">
-                <div class="col-xs-1 col-xs-offset-1">
-                    <h6>Payment</h6>
-                </div>
-                <div class="col-xs-1 col-xs-offset-1">
-                    <h6>Service</h6>
-                </div>
-                <div class="col-xs-1 col-xs-offset-1">
-                    <h6>Worker</h6>
-                </div>
-                <div class="col-xs-1 col-xs-offset-1">
-                    <h6>Date</h6>
-                </div>
-                
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-prmary"></i>
+                    <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                </span>
             </div>
-            
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+            <div class="row">
+                <p><b>Inset Name</b><br>I am a User</br></p>
+            </div>
+            <div class="row">
+                <p><b>Profile</b></p>
+            </div>
+            <div class="row">
+                <p>I am another category</p>
+            </div>
+        </div> <!-- div class "col-lg-4" -->
+        <div class="col-lg-8 col-lg-offset-4">
+            <div class="row">
+                <div id="map"></div>
+                <script>
+                    var map;
+                        function initMap() {
+                        map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: -34.397, lng: 150.644},
+                        zoom: 8
+                        });
+                    }
+                </script>
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWFxILzy2lnajemDQ7zN0O1Y66z0sGA3g&callback=initMap"></script>
+            </div> <!-- div class "row" -->
+            <div class="row">
+                <div class="dropdown">
+                    <button id="work-type" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown Trigger
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="work-type">
+                        <li>
+                            <p>House Cleaning</p>
+                        </li>
+                        <li>
+                            <p>Plumbing</p>
+                        </li>
+                        <li>
+                            <p>Movers</p>
+                        </li>
+                        <li>
+                            <p>Painters</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        
+        </div> <!-- div class "col-lg-8 col-lg-offset-4" -->
     
     <footer>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="index.html">WorkMe Home</a><a>  |  </a>
+                    <a href="index.html">WorkMe Home</a><a>
                     <a href="register.html">Workers</a>      
                 </div>
             </div>
-        </div>
-        
-        
-        
-        
+        </div>        
     </footer>
     <script src="assets/js/jquery.js"></script>
 
