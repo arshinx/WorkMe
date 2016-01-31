@@ -21,8 +21,20 @@ $(document).ready(function(){
       console.log(centerlng); */
   var map = new google.maps.Map(document.getElementById("map"), {
     center: {lat: workerlocation[0], lng: workerlocation[1]},
-    zoom: 12
+    zoom: 13
   });
+  var marker;
+  var userLatLng = {lat: userlat, lng: userlng};
+   console.log(origin);
+         marker=new google.maps.Marker({
+            position: origin,
+            map: map
+         });
+  console.log(destination);
+         marker=new google.maps.Marker({
+            position: destination,
+            map: map
+         });
   var geocoder = new google.maps.Geocoder;
 
   var service = new google.maps.DistanceMatrixService;
