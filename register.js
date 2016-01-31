@@ -114,7 +114,7 @@ $(document).ready(function(){
                }
             }
             console.log("Successfully created user account with uid:", userData.uid);
-            //window.location.replace("thankyoupage.html");
+            window.location.replace("thankyoupage.html");
         }
     
     });
