@@ -101,7 +101,16 @@ $(document).ready(function(){
                else{
                   var st_coordinates=JSON.parse(localStorage["storedcoordinates"]);
                   console.log(st_coordinates.length);
-                  //for(var )
+                  console.log(typeof st_coordinates);
+                  console.log(st_coordinates);
+                  var coordinate_array = new Array(st_coordinates.length+2);
+                  for(var i=0; i<st_coordinates.length; i++){
+                     coordinate_array[i] = st_coordinates[i];
+                  }
+                  coordinate_array[st_coordinates.length] = object_coordinate.lat;
+                  coordinate_array[st_coordinates.length+1] = object_coordinate.lng;
+                  console.log(coordinate_array);
+                  localStorage["storedcoordinates"]=JSON.stringify(coordinate_array);
                }
             }
             console.log("Successfully created user account with uid:", userData.uid);
