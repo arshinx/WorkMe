@@ -17,31 +17,32 @@ $(document).ready(function(){
    var address_full;
    var address;
    var authData = ref.getAuth();
-   var url = "https://workme.firebaseio.com/users/"+authData.uid+"/full_address";
-   var address_funct = new Firebase(url).once('value', function(snap){
-      address_full=snap.val();
-      var temp=address_full.split(" ");
-      address = temp[0];
-      var i;
-      for (i=1; i<temp.length-1; i++){
-         address+= "+";
-         address += temp[i];
-      }
-      address += temp[temp.length-1];
-      console.log(address);
-      $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address=" + address, function(data, textStatus){
-         object_coordinate = data.results[0].geometry.location;
-         console.log(object_coordinate);
-         //console.log(coordinate[0]);
-      });
-      
-});
+   var coordinate_lat;
+   var coordinate_lng;
+   /*var url_lat = "https://workme.firebaseio.com/users/"+authData.uid+"/coordinate_lat";
+   new Firebase(url_lat).once('value', function(snap){
+      coordinate_lat=snap.val();
+      //console.log(coordinate_lat);
+   });
+   var url_lng = "https://workme.firebaseio.com/users/"+authData.uid+"/coordinate_lng";
+   new Firebase(url_lng).once('value', function(snap){
+      coordinate_lng=snap.val();
+      console.log(coordinate_lng);
+      console.log(coordinate_lat)
+   });
+   console.log(coordinate_lat);
+   console.log(coordinate_lng);*/
+   
       var map;
       function initialize() {
+         coordinate_lat=parseFloat(localStorage.getItem("lat"));
+         coordinate_lng=parseFloat(localStorage.getItem("lng"));
+         console.log(coordinate_lat);
+         console.log(coordinate_lng);
         var mapOptions = {
-          zoom: 2,
-          center: {lat: -33.865427, lng: 151.196123},
-          mapTypeId: google.maps.MapTypeId.TERRAIN
+          zoom: 13,
+          center: {lat: coordinate_lat, lng: coordinate_lng},
+          mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById('map'),
               mapOptions);

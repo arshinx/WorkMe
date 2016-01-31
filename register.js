@@ -64,6 +64,8 @@ $(document).ready(function(){
             var usersRef = ref.child("users").child(userData.uid);
             usersRef.set({
                full_address: full_address,
+               coordinate_lat: object_coordinate.lat,
+               coordinate_lng: object_coordinate.lng,
                zipcode: zipcode,
                fullname: fullname,
                worker: worker,
