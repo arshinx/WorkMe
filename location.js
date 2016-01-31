@@ -76,5 +76,7 @@ $(document).ready(function(){
       //}
       // Call the initialize function after the page has finished loading
       google.maps.event.addDomListener(window, 'load', initialize);
-
+      $("#request").click(function() {
+         window.location.replace("inservice.html");
+      });
 });
