@@ -47,16 +47,7 @@ $(document).ready(function(){
         };
         map = new google.maps.Map(document.getElementById('map'),
               mapOptions);
-       
-        // Create a <script> tag and set the USGS URL as the source.
-        //var script = document.createElement('script');
-        // (In this example we use a locally stored copy instead.)
-        // script.src = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp';
-        //script.src = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp';
-        //document.getElementsByTagName('head')[0].appendChild(script);
-      }
-      var marker;
-      for(var n=0; n<stored_coordinates.length/2;n++){
+         for(var n=0; n<stored_coordinates.length/2;n++){
             console.log(n)
             console.log(stored_coordinates[2*n]);
             console.log(stored_coordinates[2*n+1]);
@@ -68,6 +59,18 @@ $(document).ready(function(){
             map: map
          });
       }
+              
+       
+        // Create a <script> tag and set the USGS URL as the source.
+        //var script = document.createElement('script');
+        // (In this example we use a locally stored copy instead.)
+        // script.src = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp';
+        //script.src = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp';
+        //document.getElementsByTagName('head')[0].appendChild(script);
+      }
+      var marker;
+
+
       //function eqfeed_callback(results) {
         //map.data.addGeoJson(results);
       //}
