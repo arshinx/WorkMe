@@ -73,7 +73,7 @@ $(document).ready(function(){
                   localStorage.setItem("lat_worker", coordinate_lat);
                   localStorage.setItem("lng_worker", coordinate_lng);
                });
-             //window.location.replace("dashboard-worker.html");
+             window.location.replace("dashboard-worker.html");
             }
             }
             });
