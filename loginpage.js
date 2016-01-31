@@ -54,9 +54,9 @@ $(document).ready(function(){
                   //console.log(worker_coordinates);
                   localStorage["worker_coordinates"]=JSON.stringify(worker_coordinates);
                });*/
+                 window.location.replace("dashboard.html");
 
                }
-               //window.location.replace("dashboard.html");
             
             else{
             if(snap.val()){
@@ -73,7 +73,7 @@ $(document).ready(function(){
                   localStorage.setItem("lat_worker", coordinate_lat);
                   localStorage.setItem("lng_worker", coordinate_lng);
                });
-             window.location.replace("dashboard-worker.html");
+             //window.location.replace("dashboard-worker.html");
             }
             }
             });

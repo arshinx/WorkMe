@@ -17,10 +17,10 @@ $(document).ready(function(){
    var address_full;
    var address;
    var authData = ref.getAuth();
-   var coordinate_lat=localStorage.getItem("lat_worker");
-   var coordinate_lng=localStorage.getItem("lng_worker");
-   var job_lat=localStorage.getItem("lat");
-   var job_lng=localStorage.getItem("lng");
+   var coordinate_lat=parseFloat(localStorage.getItem("lat_worker"));
+   var coordinate_lng=parseFloat(localStorage.getItem("lng_worker"));
+   var job_lat;
+   var job_lng;
    /*var url_lat = "https://workme.firebaseio.com/users/"+authData.uid+"/coordinate_lat";
    new Firebase(url_lat).once('value', function(snap){
       coordinate_lat=snap.val();
@@ -37,11 +37,13 @@ $(document).ready(function(){
    //var stored_coordinates=JSON.parse(localStorage["storedcoordinates"]);
     //  console.log(stored_coordinates);
       var map;
+      var center={lat: coordinate_lat, lng: coordinate_lng};
+      console.log(center);
       function initialize() {
-         coordinate_lat=parseFloat(localStorage.getItem("lat"));
-         coordinate_lng=parseFloat(localStorage.getItem("lng"));
-         console.log(coordinate_lat);
-         console.log(coordinate_lng);
+         job_lat=parseFloat(localStorage.getItem("lat"));
+         job_lng=parseFloat(localStorage.getItem("lng"));
+         console.log(job_lat);
+         console.log(job_lng);
         var mapOptions = {
           zoom: 13,
           center: {lat: coordinate_lat, lng: coordinate_lng},
@@ -50,7 +52,7 @@ $(document).ready(function(){
         map = new google.maps.Map(document.getElementById('map'),
               mapOptions);
               
-         var latLng =   {lat: stored_coordinates[2*n], lng: stored_coordinates[2*n+1]};
+         var latLng =   {lat: job_lat, lng: job_lng};
          console.log(latLng);
          marker=new google.maps.Marker({
             position: latLng,
