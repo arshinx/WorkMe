@@ -31,6 +31,27 @@ $(document).ready(function(){
     var painting = document.getElementById("painting").checked;
     var comma = ", ";
     var full_address = street+comma+city+comma+state;
+    var object_coordinate;
+    var coordinate
+    var address;
+    //var address_funct = new Firebase(url).once('value', function(snap){
+      //address_full=snap.val();
+    var temp=full_address.split(" ");
+    address = temp[0];
+    var i;
+    for (i=1; i<temp.length-1; i++){
+       address+= "+";
+       address += temp[i];
+    }
+    address += temp[temp.length-1];
+    console.log(address);
+    $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address=" + address, function(data, textStatus){
+       object_coordinate = data.results[0].geometry.location;
+       console.log(object_coordinate);
+       //console.log(coordinate[0]);
+      });
+    
+    
     ref.createUser({
         email    : sub_email,
         password : sub_password
