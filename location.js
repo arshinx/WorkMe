@@ -32,7 +32,7 @@ $(document).ready(function(){
    });
    console.log(coordinate_lat);
    console.log(coordinate_lng);*/
-   
+   var stored_coordinates=JSON.parse(localStorage["worker_coordinates"]);
       var map;
       function initialize() {
          coordinate_lat=parseFloat(localStorage.getItem("lat"));

@@ -76,8 +76,22 @@ $(document).ready(function(){
                   painter: painting
                }
             });
+            if(worker){
+               var uid = userData.uid
+               if(localStorage.getItem("worker_ids") === null){
+                  localStorage.setItem("worker_ids", uid);
+                  console.log(uid);
+               }
+               else{
+                  var workerids=localStorage.getItem("worker_ids");
+                  workerids+=" ";
+                  workerids+=uid;
+                  localStorage.setItem("worker_ids", workerids);
+                  console.log(workerids);
+                  }
+            }
             console.log("Successfully created user account with uid:", userData.uid);
-            window.location.replace("thankyoupage.html");
+            //window.location.replace("thankyoupage.html");
         }
     
     });
