@@ -32,11 +32,11 @@ $(document).ready(function(){
                   localStorage.setItem("lat", coordinate_lat);
                   localStorage.setItem("lng", coordinate_lng);
                });
-               var workerids=localStorage.getItem("worker_ids");
+               /*var workerids=localStorage.getItem("worker_ids");
                var workerarray=workerids.split(" ");
                var i;
                var worker_coordinates= new Array(2*workerarray.length);
-               for (i=0; i<workerarray.length-; i++){
+               /*for (i=0; i<workerarray.length; i++){
                   url_lat = "https://workme.firebaseio.com/users/"+workerarray[i]+"/coordinate_lat";
                   new Firebase(url_lat).once('value', function(snap){
                   worker_coordinates[2*i]=snap.val();
@@ -53,28 +53,28 @@ $(document).ready(function(){
                   //worker_coordinates[i+1]=coordinate_lng;
                   //console.log(worker_coordinates);
                   localStorage["worker_coordinates"]=JSON.stringify(worker_coordinates);
-               });
+               });*/
 
                }
                //window.location.replace("dashboard.html");
-            }
+            
             else{
-               /*ref.orderByChild("worker").on("child_added", function(snapshot) {
-               console.log("works");
-               console.log(snapshot.val());
-               console.log(snapshot.val().authData.uid);
-            }); */
-            /*if(localStorage.getItem("worker-ids") === null){
-               localStorage.setItem("worker-ids", uid);
-               console.log(uid);
-            }
-            else{
-               var workerid=localStorage.getItem("worker-ids");
-               workerids+=" ";
-               workerids+=uid;
-               console.log(workerids);
-               }*/
+            if(snap.val()){
+                  var url_lat = "https://workme.firebaseio.com/users/"+authData.uid+"/coordinate_lat";
+                  new Firebase(url_lat).once('value', function(snap){
+                  coordinate_lat=snap.val();
+                  //console.log(coordinate_lat);
+               });
+                  var url_lng = "https://workme.firebaseio.com/users/"+authData.uid+"/coordinate_lng";
+                  new Firebase(url_lng).once('value', function(snap){
+                  coordinate_lng=snap.val();
+                  console.log(coordinate_lng);
+                  console.log(coordinate_lat);
+                  localStorage.setItem("lat_worker", coordinate_lat);
+                  localStorage.setItem("lng_worker", coordinate_lng);
+               });
              window.location.replace("dashboard-worker.html");
+            }
             }
             });
          }
