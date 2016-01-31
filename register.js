@@ -32,7 +32,9 @@ $(document).ready(function(){
     var comma = ", ";
     var full_address = street+comma+city+comma+state;
     var object_coordinate;
-    var coordinate
+    var coordinate;
+    var coordinate_lat;
+    var coordinate_lng;
     var address;
     //var address_funct = new Firebase(url).once('value', function(snap){
       //address_full=snap.val();
@@ -89,6 +91,18 @@ $(document).ready(function(){
                   localStorage.setItem("worker_ids", workerids);
                   console.log(workerids);
                   }
+               if(localStorage.getItem("storedcoordinates")===null){
+                  //var coordinate_array=new Array(2);
+                  console.log(object_coordinate.lat);
+                  var coordinate_array = [object_coordinate.lat,object_coordinate.lng];
+                  console.log(coordinate_array);
+                  localStorage["storedcoordinates"]=JSON.stringify(coordinate_array);
+               }
+               else{
+                  var st_coordinates=JSON.parse(localStorage["storedcoordinates"]);
+                  console.log(st_coordinates.length);
+                  //for(var )
+               }
             }
             console.log("Successfully created user account with uid:", userData.uid);
             //window.location.replace("thankyoupage.html");

@@ -36,21 +36,25 @@ $(document).ready(function(){
                var workerarray=workerids.split(" ");
                var i;
                var worker_coordinates= new Array(2*workerarray.length);
-               for (i=0; i<workerarray.length; i++){
+               for (i=0; i<workerarray.length-; i++){
                   url_lat = "https://workme.firebaseio.com/users/"+workerarray[i]+"/coordinate_lat";
                   new Firebase(url_lat).once('value', function(snap){
-                  coordinate_lat=snap.val();
+                  worker_coordinates[2*i]=snap.val();
+                  console.log(i);
                   console.log(coordinate_lat);
                });
                   url_lng = "https://workme.firebaseio.com/users/"+workerarray[i]+"/coordinate_lng";
                   new Firebase(url_lng).once('value', function(snap){
-                  coordinate_lng=snap.val();
+                  worker_coordinates[2*i+1]=snap.val();
                   console.log(coordinate_lng);
-                  var index = 2*i;
-                  worker_coordinates[index]=coordinate_lat;
-                  worker_coordinates[index+1]=coordinate_lng;
-               });
+                  console.log(i);
+                  //worker_coordinates[i]=coordinate_lat;
+                  console.log(worker_coordinates);
+                  //worker_coordinates[i+1]=coordinate_lng;
+                  //console.log(worker_coordinates);
                   localStorage["worker_coordinates"]=JSON.stringify(worker_coordinates);
+               });
+
                }
                //window.location.replace("dashboard.html");
             }
