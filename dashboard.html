@@ -93,14 +93,17 @@
             <div class="row">
                 <p>I am another category</p>
             </div>
+            <div class="row">
+                <b>Log Out</b>
+            </div>
         </div> <!-- div class "col-lg-4" -->
         <div class="col-lg-8 col-md-8">
             <div class="row">
-                <div id="map" style="width:1000px; height:400px;"></div>
+                <div id="map" style="width:700px; height:400px;"></div>
             </div> <!-- div class "row" -->
             <div class="row text-centered">
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown example
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Work Type
                         <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                         <li><a href="#">House Cleaning Services</a></li>
@@ -109,6 +112,26 @@
                         <li><a href="#">Painting Services</a></li>
                         </ul>
                 </div>
+            </div>
+            <div class="row text-centered">
+                <b>Describe what you need done.</b>
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <div class="row text-centered">
+                <b>Set the amount you wish to pay for services</b>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">$</div>
+                            <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                            <div class="input-group-addon">.00</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-default">Request Service</button>
             </div>
         
         </div> <!-- div class "col-lg-8 col-lg-offset-4 col-md-8" -->
