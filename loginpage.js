@@ -1,6 +1,5 @@
 $(document).ready(function(){
   var ref = new Firebase("https://workme.firebaseio.com/");
-   console.log(" dsu javascript");
 
   $("#submit").click(function() {
     var sub_email = $("#email").val();
@@ -14,9 +13,17 @@ $(document).ready(function(){
         window.alert("Login Failed!")
         } else {
             console.log("Authenticated successfully with payload:", authData);
-            window.location.replace("dashboard.html");
-        }
+            var url = "https://workme.firebaseio.com/users/"+authData.uid+"/worker";
+            var worker = new Firebase(url).once('value', function(snap){
+            if(!snap.val()){
+               window.location.replace("dashboard.html");
+            }
+            else{
+               
+            }
+            });
+         }
+        });
 });
 
-});
 });
