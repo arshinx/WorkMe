@@ -40,17 +40,17 @@ $(document).ready(function(){
         //window.alert("Error creating user");
         document.getElementById("warning").style.display = "block";
         } else {
-            var usersRef = ref.child(userData.uid);
+            var usersRef = ref.child("users").child(userData.uid);
             usersRef.set({
-               userInformation: {
                full_address: full_address,
                zipcode: zipcode,
                fullname: fullname,
                worker: worker,
-               cleaner: cleaning,
-               plumber: plumbing,
-               mover: moving,
-               painter: painting
+               workertype:{
+                  cleaner: cleaning,
+                  plumber: plumbing,
+                  mover: moving,
+                  painter: painting
                }
             });
             console.log("Successfully created user account with uid:", userData.uid);
