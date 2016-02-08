@@ -90,6 +90,7 @@ $(document).ready(function(){
                ref.child("worker_coordinates").update({
                   coordinates
                });
+               window.location.replace("thankyoupage.html");
             });
            }
            else{

@@ -60,8 +60,8 @@ $(document).ready(function(){
                   console.log(JSON.stringify(snap.val().coordinates));
                   var stringify_coordinate = JSON.stringify(snap.val().coordinates);
                   localStorage.setItem("worker_coordinates", stringify_coordinate);
+                  window.location.replace("dashboard.html");
                });
-               window.location.replace("dashboard.html");
             }
             
             else{
