@@ -32,8 +32,8 @@ $(document).ready(function(){
    });
    console.log(coordinate_lat);
    console.log(coordinate_lng);*/
-   var stored_coordinates=JSON.parse(localStorage["storedcoordinates"]);
-      console.log(stored_coordinates);
+   var stored_coordinates=JSON.parse(localStorage["worker_coordinates"]);
+      console.log(JSON.parse(stored_coordinates[0]));
       var map;
       function initialize() {
          coordinate_lat=parseFloat(localStorage.getItem("lat"));
@@ -47,7 +47,7 @@ $(document).ready(function(){
         };
         map = new google.maps.Map(document.getElementById('map'),
               mapOptions);
-         for(var n=0; n<stored_coordinates.length/2;n++){
+         /*for(var n=0; n<stored_coordinates.length/2;n++){
             console.log(n)
             console.log(stored_coordinates[2*n]);
             console.log(stored_coordinates[2*n+1]);
@@ -57,18 +57,25 @@ $(document).ready(function(){
          marker=new google.maps.Marker({
             position: latLng,
             map: map
-         });
+         });*/
+         for(var n=0; n<stored_coordinates.length; n++){
+            var latLng = JSON.parse(stored_coordinates[n]);
+            console.log(latLng);
+            marker = new google.maps.Marker({
+               position: latLng,
+               map: map
+            });
+         }
       }
-              
-       
+      
         // Create a <script> tag and set the USGS URL as the source.
         //var script = document.createElement('script');
         // (In this example we use a locally stored copy instead.)
         // script.src = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp';
         //script.src = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp';
         //document.getElementsByTagName('head')[0].appendChild(script);
-      }
-      var marker;
+      //}
+      //var marker;
 
 
       //function eqfeed_callback(results) {

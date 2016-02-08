@@ -18,7 +18,7 @@ $(document).ready(function(){
             uid=authData.uid;
             var url = "https://workme.firebaseio.com/users/"+authData.uid+"/worker";
             var worker = new Firebase(url).once('value', function(snap){
-            if(!snap.val()){
+            if(snap.val()==0){
                   var url_lat = "https://workme.firebaseio.com/users/"+authData.uid+"/coordinate_lat";
                   new Firebase(url_lat).once('value', function(snap){
                   coordinate_lat=snap.val();
@@ -54,12 +54,18 @@ $(document).ready(function(){
                   //console.log(worker_coordinates);
                   localStorage["worker_coordinates"]=JSON.stringify(worker_coordinates);
                });*/
-                 window.location.replace("dashboard.html");
-
-               }
+               var url_worker = "https://workme.firebaseio.com/worker_coordinates/";
+               new Firebase(url_worker).once('value', function(snap){
+                  console.log(snap.val().coordinates);
+                  console.log(JSON.stringify(snap.val().coordinates));
+                  var stringify_coordinate = JSON.stringify(snap.val().coordinates);
+                  localStorage.setItem("worker_coordinates", stringify_coordinate);
+               });
+               window.location.replace("dashboard.html");
+            }
             
             else{
-            if(snap.val()){
+            if(snap.val()==1){
                   var url_lat = "https://workme.firebaseio.com/users/"+authData.uid+"/coordinate_lat";
                   new Firebase(url_lat).once('value', function(snap){
                   coordinate_lat=snap.val();

@@ -8,7 +8,7 @@ $(document).ready(function(){
    function toggleShow(box, id) {
     // get reference to related content to display/hide
     var el = document.getElementById(id);
-    
+
     if ( box.checked ) {
         el.style.display = 'block';
     } else {
@@ -52,8 +52,8 @@ $(document).ready(function(){
        console.log(object_coordinate);
        //console.log(coordinate[0]);
       });
-    
-    
+
+
     ref.createUser({
         email    : sub_email,
         password : sub_password
@@ -63,6 +63,7 @@ $(document).ready(function(){
         //window.alert("Error creating user");
         document.getElementById("warning").style.display = "block";
         } else {
+           if(worker){
             var usersRef = ref.child("users").child(userData.uid);
             usersRef.set({
                full_address: full_address,
@@ -70,6 +71,7 @@ $(document).ready(function(){
                coordinate_lng: object_coordinate.lng,
                zipcode: zipcode,
                fullname: fullname,
+               //available: false,
                worker: worker,
                workertype:{
                   cleaner: cleaning,
@@ -77,6 +79,28 @@ $(document).ready(function(){
                   mover: moving,
                   painter: painting
                }
+            });
+            console.log(JSON.stringify(object_coordinate));
+            var url_worker = "https://workme.firebaseio.com/worker_coordinates/";
+            new Firebase(url_worker).once('value', function(snap){
+               console.log(snap.val().coordinates[0]);
+               var i=snap.val().coordinates.length;
+               coordinates = snap.val().coordinates; 
+               coordinates[i] = JSON.stringify(object_coordinate); 
+               ref.child("worker_coordinates").update({
+                  coordinates
+               });
+            });
+           }
+           else{
+            var usersRef = ref.child("users").child(userData.uid);
+            usersRef.set({
+               full_address: full_address,
+               coordinate_lat: object_coordinate.lat,
+               coordinate_lng: object_coordinate.lng,
+               zipcode: zipcode,
+               fullname: fullname,
+               worker: worker
             });
             if(worker){
                var uid = userData.uid
@@ -116,8 +140,8 @@ $(document).ready(function(){
             console.log("Successfully created user account with uid:", userData.uid);
             window.location.replace("thankyoupage.html");
         }
-    
-    });
+        }  
 
+    });
 });
 });
